@@ -1,0 +1,5 @@
+com\boot\microservices\AddResponse.class
+com\boot\microservices\AddResource.class
+com\boot\microservices\AddNumberImpl.class
+com\boot\microservices\AddPublisher.class
+com\boot\microservices\HelloWorldService.class
