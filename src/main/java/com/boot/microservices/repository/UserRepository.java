@@ -1,15 +1,12 @@
 package com.boot.microservices.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends  Repository<User, Integer> {
 
 	
-	@Query("select u from User u where LOWER(u.ACCOUNT_NUMBER)= LOWER(:ACCOUNT_NUMBER)")
+	@Query("select u from User u where LOWER(u.account_number)= LOWER(:ACCOUNT_NUMBER)")
     User validateByUserName(@Param("ACCOUNT_NUMBER") Integer ACCOUNT_NUMBER);
 }

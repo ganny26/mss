@@ -15,11 +15,11 @@ public class User {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column(name = "account_number")
+//	@Column(name = "account_number")
 	private Integer account_number;
-	@Column(name = "amount")
+//	@Column(name = "amount")
 	private Integer amount;
-	@Column(name = "currency_code")
+//	@Column(name = "currency_code")
 	private String currency_code;
 	
 	public Integer getId() {

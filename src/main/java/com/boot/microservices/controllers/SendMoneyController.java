@@ -1,32 +1,33 @@
 package com.boot.microservices.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.boot.microservices.SendMoneyResource;
 import com.boot.microservices.Response.SendMoneyResponse;
-import com.microservices.services.SendMoneyService;
 
-@RestController
+@Component
+@Controller
 @RequestMapping("/sendMoney")
-@Configuration
-@ComponentScan("com.microservices.services")
+@SpringBootApplication
+@EnableJpaRepositories(basePackages = "demo", considerNestedRepositories = true)
 public class SendMoneyController {
 	
 	@Autowired
-	private SendMoneyService SendMoneyService;
+	private SendMoneyService sendMoneyService;
 	
 	@RequestMapping(produces = "application/json", method = RequestMethod.POST)
 	@ResponseBody
 	public SendMoneyResponse addNumber(@RequestBody SendMoneyResource sendMoneyResource){
 		SendMoneyResponse SendMoneyResponse = new SendMoneyResponse();
-		SendMoneyService.sendMoney(sendMoneyResource);
+		sendMoneyService.sendMoney(sendMoneyResource);
 		return SendMoneyResponse;		
 	}
 
